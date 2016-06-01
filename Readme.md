@@ -7,6 +7,7 @@ Uses perlin noise and radial filtering to generate an island landmass.
 Right now, all you can do is generate a simple island-shape into a PNG file named 'out.png'. Simply run:
 
 ```
+pip install -r requirements.txt
 python worldmap.py
 ```
 
