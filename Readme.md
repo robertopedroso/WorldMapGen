@@ -9,3 +9,7 @@ Right now, all you can do is generate a simple island-shape into a PNG file name
 ```
 python worldmap.py
 ```
+
+# Examples
+
+![Example of generated island](/examples/1.png)
