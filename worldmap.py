@@ -17,15 +17,21 @@ def noise_tile(x, y, seed):
     return snoise2(nx, ny, octaves=8, base=seed)
 
 def normalize(x, xmin, xmax):
+    """Normalizes x on [0, 1] based on min and max of x domain"""
     return (x - xmin) / (xmax - xmin)
+
+def normalize2d(lst):
+    """Normalizes a square matrix on [0, 1]"""
+    flat = list(itertools.chain.from_iterable(lst))
+    xmin, xmax = min(flat), max(flat)
+    norm = [normalize(x, xmin, xmax) for x in flat]
+
+    rowlen = len(lst[0])
+    return [norm[i:i+rowlen] for i in range(0, rowlen**2, rowlen)]
 
 def generate_heightmap(size, seed):
     hm = [[noise_tile(x, y, seed) for x in range(size)] for y in range(size)]
-
-    # normalize to [0, 1]
-    heights = list(itertools.chain.from_iterable(hm))
-    xmin, xmax = min(heights), max(heights)
-    return [[normalize(hm[y][x], xmin, xmax) for x in range(size)] for y in range(size)]
+    return normalize2d(hm)
 
 def point2square(x, y, scale):
     x *= scale
