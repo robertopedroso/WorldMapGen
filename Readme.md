@@ -15,3 +15,4 @@ python worldmap.py
 
 ![Example 1 of generated islands](/examples/1.png)
 ![Example 2 of generated islands](/examples/2.png)
+![Example 3 of generated islands](/examples/3.png)
